@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html class="dark" lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Звук ВО рту — студия звукозаписи в центре Москвы</title>
+  <meta name="description" content="Запись, сведение, биты, обучение и готовые треки в студии звукозаписи Звук ВО рту на Покровке в Москве.">
+  <meta name="theme-color" content="#00f0ff">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed-variant": "#474746",
+            "on-tertiary-container": "#5f5e5e",
+            "surface-variant": "#353534",
+            "primary": "#dbfcff",
+            "secondary": "#c6c6c7",
+            "on-secondary": "#2f3131",
+            "inverse-on-surface": "#313030",
+            "surface-container-highest": "#353534",
+            "outline-variant": "#3b494b",
+            "on-secondary-fixed-variant": "#454747",
+            "secondary-container": "#454747",
+            "secondary-fixed-dim": "#c6c6c7",
+            "surface-tint": "#00dbe9",
+            "tertiary-container": "#dcd9d8",
+            "surface-container": "#201f1f",
+            "on-surface-variant": "#b9cacb",
+            "on-primary-fixed-variant": "#004f54",
+            "on-primary-fixed": "#002022",
+            "on-surface": "#e5e2e1",
+            "on-tertiary-fixed": "#1c1b1b",
+            "outline": "#849495",
+            "tertiary": "#f8f5f5",
+            "on-error": "#690005",
+            "tertiary-fixed": "#e5e2e1",
+            "on-primary-container": "#006970",
+            "primary-fixed-dim": "#00dbe9",
+            "surface-dim": "#131313",
+            "surface-bright": "#3a3939",
+            "on-secondary-container": "#b4b5b5",
+            "surface-container-low": "#1c1b1b",
+            "surface-container-high": "#2a2a2a",
+            "secondary-fixed": "#e2e2e2",
+            "surface": "#131313",
+            "on-error-container": "#ffdad6",
+            "tertiary-fixed-dim": "#c8c6c5",
+            "surface-container-lowest": "#0e0e0e",
+            "on-primary": "#00363a",
+            "on-tertiary": "#313030",
+            "background": "#131313",
+            "on-secondary-fixed": "#1a1c1c",
+            "primary-container": "#00f0ff",
+            "inverse-primary": "#006970",
+            "inverse-surface": "#e5e2e1",
+            "error": "#ffb4ab",
+            "on-background": "#e5e2e1",
+            "primary-fixed": "#7df4ff",
+            "error-container": "#93000a"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "margin-mobile": "16px",
+            "margin-desktop": "40px",
+            "container-max": "1280px",
+            "gutter": "24px",
+            "unit": "8px"
+          },
+          fontFamily: {
+            "display-xl": ["Space Grotesk"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Space Grotesk"],
+            "label-caps": ["Space Grotesk"],
+            "body-md": ["Inter"],
+            "headline-md": ["Space Grotesk"]
+          },
+          fontSize: {
+            "display-xl": ["96px", { lineHeight: "1.0", letterSpacing: "-0.04em", fontWeight: "700" }],
+            "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+            "headline-lg": ["48px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-caps": ["14px", { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "700" }],
+            "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+            "headline-md": ["32px", { lineHeight: "1.2", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #000000; color: #e5e2e1; }
+    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+    .neo-blur { backdrop-filter: blur(20px); background: rgba(0, 0, 0, 0.8); }
+    .text-glow:hover { text-shadow: 0 0 15px rgba(0, 240, 255, 0.6); }
+    .spec-label { font-family: "Space Grotesk"; font-weight: 700; text-transform: uppercase; font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: #000; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #1A1A1A; }
+    .equipment-media {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 900px;
+    }
+    .equipment-shot {
+      display: block;
+      transform: translate3d(0, 0, 0) scale(1);
+      filter: grayscale(1) saturate(0.72) contrast(1.02);
+      transition:
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.42s ease;
+      transform-origin: center center;
+      will-change: transform, filter;
+    }
+    .equipment-media:hover .equipment-shot {
+      transform: translate3d(0, -8px, 36px) scale(1.08);
+      filter: grayscale(0) saturate(1) contrast(1);
+      box-shadow: 0 22px 44px rgba(0, 0, 0, 0.34);
+    }
+    .nav-link {
+      border-bottom: 2px solid transparent;
+      color: rgba(255, 255, 255, 0.7);
+      transition:
+        color 0.25s ease,
+        border-color 0.25s ease;
+    }
+    .nav-link:hover,
+    .nav-link:focus-visible {
+      border-color: #00F0FF;
+      color: #00F0FF;
+      outline: none;
+    }
+    .hero-visual {
+      transform: scale(1.06);
+      transform-origin: center center;
+      transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+    .motion-ready .hero-visual { transform: scale(1); }
+    .motion-lift {
+      transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        background-color 0.35s ease,
+        color 0.35s ease;
+    }
+    .motion-lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+    }
+    [data-reveal] {
+      opacity: 0;
+      transform: translate3d(0, 28px, 0);
+      transition:
+        opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: opacity, transform;
+    }
+    [data-reveal="nav"] { transform: translate3d(0, -18px, 0); }
+    [data-reveal="hero"] { transform: translate3d(0, 24px, 0); }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .hero-visual,
+      .motion-lift,
+      .equipment-shot {
+        transition: none !important;
+        transform: none !important;
+      }
+      .motion-lift:hover {
+        box-shadow: none !important;
+      }
+      [data-reveal] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+  <header class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/90 backdrop-blur-xl">
+    <nav class="mx-auto flex max-w-[1440px] items-center justify-between px-4 py-4 md:px-6" data-reveal="nav" data-immediate>
+      <div class="text-xl font-black italic tracking-tighter text-white md:text-2xl">ЗВУК ВО РТУ</div>
+      <div class="hidden items-center gap-8 md:flex">
+        <a class="nav-link pb-1 font-['Space_Grotesk'] font-black uppercase tracking-tighter" href="#studio">Студия</a>
+        <a class="nav-link pb-1 font-['Space_Grotesk'] font-black uppercase tracking-tighter" href="#services">Услуги</a>
+        <a class="nav-link pb-1 font-['Space_Grotesk'] font-black uppercase tracking-tighter" href="#equipment">Оборудование</a>
+        <a class="nav-link pb-1 font-['Space_Grotesk'] font-black uppercase tracking-tighter" href="#gallery">Галерея</a>
+        <a class="nav-link pb-1 font-['Space_Grotesk'] font-black uppercase tracking-tighter" href="#reviews">Отзывы</a>
+        <a class="nav-link pb-1 font-['Space_Grotesk'] font-black uppercase tracking-tighter" href="#faq">Вопросы</a>
+      </div>
+      <a class="hidden bg-primary-container px-3 py-2 font-['Space_Grotesk'] text-[11px] font-black uppercase tracking-tight text-on-primary-container transition-transform duration-150 hover:scale-95 sm:inline-block md:px-6 md:text-sm md:tracking-tighter" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer">Записаться</a>
+    </nav>
+  </header>
+
+  <main class="pt-20">
+    <section class="relative flex min-h-screen items-center overflow-hidden px-margin-mobile md:px-margin-desktop">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        <img class="hero-visual h-full w-full object-cover grayscale opacity-50" src="assets/images/hero.jpg" alt="Интерьер студии звукозаписи" fetchpriority="high" width="1600" height="1200">
+      </div>
+      <div class="relative z-20 max-w-[1000px]" data-reveal="hero" data-immediate>
+        <h1 class="mb-6 font-display-xl text-[34px] uppercase leading-[0.94] text-white sm:text-[72px] md:text-display-xl">
+          Студия звукозаписи <br> в центре <span class="text-primary-container">Москвы</span>
+        </h1>
+        <p class="mb-10 max-w-[600px] text-base leading-8 text-secondary md:font-body-lg md:text-body-lg">
+          Запись, сведение, биты и обучение в атмосфере, где музыка реально рождается. Профессиональный звук без лишнего пафоса.
+        </p>
+        <div class="mb-12 flex flex-wrap items-center gap-4">
+          <div class="flex items-center gap-2 rounded-full border border-white/10 bg-surface-container-high px-4 py-2">
+            <span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">location_on</span>
+            <span class="text-xs font-bold uppercase tracking-[0.14em] text-white md:font-label-caps md:text-label-caps">ул. Покровка, 2/1с2</span>
+          </div>
+          <div class="flex items-center gap-2 rounded-full border border-white/10 bg-surface-container-high px-4 py-2">
+            <span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">home_pin</span>
+            <span class="text-xs font-bold uppercase tracking-[0.14em] text-white md:font-label-caps md:text-label-caps">4 этаж</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-6 sm:flex-row">
+          <a class="inline-flex w-full items-center justify-center bg-white px-6 py-5 text-base uppercase tracking-wider text-black transition-colors duration-300 hover:bg-primary-container sm:w-auto md:px-10 md:font-headline-md md:text-body-lg" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer">
+            Записаться в Телеграм
+          </a>
+          <a class="inline-flex w-full items-center justify-center border-2 border-white px-6 py-5 text-base uppercase tracking-wider text-white transition-colors duration-300 hover:border-primary-container hover:text-primary-container sm:w-auto md:px-10 md:font-headline-md md:text-body-lg" href="#services">
+            Смотреть услуги
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface-container-lowest px-margin-mobile py-32 md:px-margin-desktop" id="studio">
+      <div class="mx-auto max-w-container-max">
+        <div class="grid grid-cols-1 items-center gap-20 md:grid-cols-2">
+          <div data-reveal data-delay="0">
+            <span class="mb-4 block font-label-caps text-label-caps text-primary-container">О нас</span>
+            <h2 class="mb-8 font-headline-lg text-headline-lg text-white">ЭНЕРГИЯ УЛИЦ И ПРЕЦИЗИОННЫЙ ЗВУК</h2>
+            <p class="mb-6 font-body-lg text-body-lg text-secondary">
+              Мы создали пространство для тех, кто живёт музыкой. «Звук ВО рту» — это не просто студия в центре города, а точка, где можно записать трек, довести его до финала и получить нужный вайб.
+            </p>
+            <p class="font-body-lg text-body-lg text-secondary">
+              Здесь профессиональное оборудование мирового класса встречается с атмосферой поздних сессий. Мы помогаем не только нажать на Record, но и собрать трек целиком: от записи до выпуска.
+            </p>
+          </div>
+          <div class="relative" data-reveal data-delay="120">
+            <div class="absolute -left-4 -top-4 h-24 w-24 border-l-2 border-t-2 border-primary-container"></div>
+            <img class="aspect-square w-full object-cover" src="assets/images/about.jpg" alt="Микшерный пульт и мониторы в студии" width="900" height="900">
+            <div class="absolute -bottom-4 -right-4 h-24 w-24 border-b-2 border-r-2 border-primary-container"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-margin-mobile py-32 md:px-margin-desktop" id="services">
+      <div class="mx-auto max-w-container-max">
+        <h2 class="mb-16 text-center font-headline-lg text-headline-lg text-white" data-reveal>УСЛУГИ И ПРАЙС</h2>
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <a class="motion-lift group border border-white/5 bg-surface-container-low p-8 transition-colors hover:border-primary-container" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer" data-reveal data-delay="0">
+            <div class="mb-12 flex items-start justify-between">
+              <span class="material-symbols-outlined text-4xl text-primary-container">mic</span>
+              <span class="font-display-xl text-3xl text-white transition-colors group-hover:text-primary-container">1500 ₽</span>
+            </div>
+            <h3 class="mb-4 font-headline-md text-headline-md text-white">Час на студии</h3>
+            <p class="mb-8 font-body-md text-secondary">Аренда студии с оборудованием для записи вокала и работы над материалом.</p>
+            <span class="spec-label">За час</span>
+          </a>
+
+          <a class="motion-lift group border border-white/5 bg-surface-container-low p-8 transition-colors hover:border-primary-container" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer" data-reveal data-delay="80">
+            <div class="mb-12 flex items-start justify-between">
+              <span class="material-symbols-outlined text-4xl text-primary-container">equalizer</span>
+              <span class="font-display-xl text-3xl text-white transition-colors group-hover:text-primary-container">3200 ₽</span>
+            </div>
+            <h3 class="mb-4 font-headline-md text-headline-md text-white">Готовый трек</h3>
+            <p class="mb-8 font-body-md text-secondary">2 часа записи плюс сведение и мастеринг для финальной версии трека.</p>
+            <span class="spec-label">Под ключ</span>
+          </a>
+
+          <a class="motion-lift group border border-white/5 bg-surface-container-low p-8 transition-colors hover:border-primary-container" href="https://t.me/zvr_mix" target="_blank" rel="noreferrer" data-reveal data-delay="160">
+            <div class="mb-12 flex items-start justify-between">
+              <span class="material-symbols-outlined text-4xl text-primary-container">public</span>
+              <span class="font-display-xl text-3xl text-white transition-colors group-hover:text-primary-container">990 ₽</span>
+            </div>
+            <h3 class="mb-4 font-headline-md text-headline-md text-white">Дистрибуция</h3>
+            <p class="mb-8 font-body-md text-secondary">Подготовка и выпуск вашего релиза на цифровые музыкальные площадки.</p>
+            <span class="spec-label">Один релиз</span>
+          </a>
+
+          <a class="motion-lift group border border-white/5 bg-surface-container-low p-8 transition-colors hover:border-primary-container" href="https://t.me/zvr_mix" target="_blank" rel="noreferrer" data-reveal data-delay="40">
+            <div class="mb-12 flex items-start justify-between">
+              <span class="material-symbols-outlined text-4xl text-primary-container">piano</span>
+              <span class="font-display-xl text-3xl text-white transition-colors group-hover:text-primary-container">3990 ₽</span>
+            </div>
+            <h3 class="mb-4 font-headline-md text-headline-md text-white">Биты / Аранж</h3>
+            <p class="mb-8 font-body-md text-secondary">Создание бита и аранжировки под подачу, темп и настроение вашего трека.</p>
+            <span class="spec-label">От</span>
+          </a>
+
+          <a class="motion-lift group border border-white/5 bg-surface-container-low p-8 transition-colors hover:border-primary-container" href="https://t.me/zvr_mix" target="_blank" rel="noreferrer" data-reveal data-delay="120">
+            <div class="mb-12 flex items-start justify-between">
+              <span class="material-symbols-outlined text-4xl text-primary-container">edit_note</span>
+              <span class="font-display-xl text-3xl text-white transition-colors group-hover:text-primary-container">3990 ₽</span>
+            </div>
+            <h3 class="mb-4 font-headline-md text-headline-md text-white">Текст песни</h3>
+            <p class="mb-8 font-body-md text-secondary">Написание текста с учётом вашей подачи, тембра и музыкального направления.</p>
+            <span class="spec-label">От</span>
+          </a>
+
+          <a class="motion-lift group border border-white/5 bg-surface-container-low p-8 transition-colors hover:border-primary-container" href="https://t.me/zvr_mix" target="_blank" rel="noreferrer" data-reveal data-delay="200">
+            <div class="mb-12 flex items-start justify-between">
+              <span class="material-symbols-outlined text-4xl text-primary-container">school</span>
+              <span class="font-display-xl text-3xl text-white transition-colors group-hover:text-primary-container">1500 ₽</span>
+            </div>
+            <h3 class="mb-4 font-headline-md text-headline-md text-white">Обучение</h3>
+            <p class="mb-8 font-body-md text-secondary">Уроки по записи, сведению, работе с вокалом и базовому продакшену.</p>
+            <span class="spec-label">За час</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y border-white/5 bg-black px-margin-mobile py-24 md:px-margin-desktop">
+      <div class="mx-auto grid max-w-container-max grid-cols-2 gap-12 text-center md:grid-cols-5" data-reveal>
+        <div class="flex flex-col items-center">
+          <span class="material-symbols-outlined mb-4 text-4xl text-primary-container">location_city</span>
+          <span class="font-label-caps text-xs text-white">ЦЕНТР МОСКВЫ</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="material-symbols-outlined mb-4 text-4xl text-primary-container">send</span>
+          <span class="font-label-caps text-xs text-white">БЫСТРАЯ ЗАПИСЬ</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="material-symbols-outlined mb-4 text-4xl text-primary-container">settings_input_component</span>
+          <span class="font-label-caps text-xs text-white">ТОП ЖЕЛЕЗО</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="material-symbols-outlined mb-4 text-4xl text-primary-container">support_agent</span>
+          <span class="font-label-caps text-xs text-white">ПОМОЩЬ ЗВУКАРЯ</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span class="material-symbols-outlined mb-4 text-4xl text-primary-container">payments</span>
+          <span class="font-label-caps text-xs text-white">АДЕКВАТНЫЕ ЦЕНЫ</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-margin-mobile py-32 md:px-margin-desktop" id="equipment">
+      <div class="mx-auto max-w-container-max">
+        <h2 class="mb-16 font-headline-lg text-headline-lg text-white" data-reveal>СЕТАП</h2>
+        <div class="grid grid-cols-1 gap-px border border-white/10 bg-white/10 lg:grid-cols-2">
+          <div class="motion-lift flex flex-col items-center gap-10 bg-black p-12 md:flex-row" data-reveal data-delay="0">
+            <div class="equipment-media">
+              <img class="equipment-shot aspect-square w-48 object-contain" src="assets/images/equipment-mic.jpg" alt="Neumann TLM 103" width="512" height="512">
+            </div>
+            <div>
+              <span class="spec-label mb-2 block">Микрофон</span>
+              <h3 class="mb-4 font-headline-md text-white">Neumann TLM 103</h3>
+              <p class="font-body-md text-secondary">Мировой стандарт для записи вокала. Чистый звук, детализация и уверенная подача.</p>
+            </div>
+          </div>
+          <div class="motion-lift flex flex-col items-center gap-10 bg-black p-12 md:flex-row" data-reveal data-delay="100">
+            <div class="equipment-media">
+              <img class="equipment-shot aspect-square w-48 object-contain" src="assets/images/equipment-interface.jpg" alt="Apollo Twin X" width="512" height="512">
+            </div>
+            <div>
+              <span class="spec-label mb-2 block">Интерфейс</span>
+              <h3 class="mb-4 font-headline-md text-white">Apollo Twin X</h3>
+              <p class="font-body-md text-secondary">Надёжный интерфейс для записи и контроля с качественными преампами и точной подачей.</p>
+            </div>
+          </div>
+          <div class="motion-lift flex flex-col items-center gap-10 bg-black p-12 md:flex-row" data-reveal data-delay="40">
+            <div class="equipment-media">
+              <img class="equipment-shot aspect-square w-48 object-contain" src="assets/images/equipment-headphones.jpg" alt="Audio-Technica ATH-M50X" width="512" height="512">
+            </div>
+            <div>
+              <span class="spec-label mb-2 block">Мониторинг</span>
+              <h3 class="mb-4 font-headline-md text-white">Audio-Technica ATH-M50X</h3>
+              <p class="font-body-md text-secondary">Плотный мониторинг для контроля записи, дублей и правок по вокалу.</p>
+            </div>
+          </div>
+          <div class="motion-lift flex flex-col items-center gap-10 bg-black p-12 md:flex-row" data-reveal data-delay="140">
+            <div class="equipment-media">
+              <img class="equipment-shot aspect-square w-48 object-contain" src="assets/images/equipment-speakers.jpg" alt="KRK Rokit 7 G5" width="512" height="512">
+            </div>
+            <div>
+              <span class="spec-label mb-2 block">Мониторы</span>
+              <h3 class="mb-4 font-headline-md text-white">KRK Rokit 7 G5</h3>
+              <p class="font-body-md text-secondary">Мониторы для точной передачи низа, середины и общей картины микса.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface-container-lowest px-margin-mobile py-32 md:px-margin-desktop" id="gallery">
+      <div class="mx-auto max-w-container-max">
+        <div class="grid h-auto grid-cols-2 gap-4 md:grid-cols-4 md:h-[600px]">
+          <div class="col-span-2 row-span-2" data-reveal data-delay="0">
+            <img class="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0" src="assets/images/gallery-room.jpg" alt="Общий вид студии" width="1200" height="1200">
+          </div>
+          <div class="col-span-1" data-reveal data-delay="90">
+            <img class="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0" src="assets/images/gallery-vocal.jpg" alt="Запись вокала" width="900" height="900">
+          </div>
+          <div class="col-span-1" data-reveal data-delay="150">
+            <img class="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0" src="assets/images/gallery-engineer.jpg" alt="Работа за пультом" width="900" height="900">
+          </div>
+          <div class="col-span-2" data-reveal data-delay="120">
+            <img class="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0" src="assets/images/gallery-headphones.jpg" alt="Наушники в студии" width="1200" height="900">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-margin-mobile py-32 md:px-margin-desktop">
+      <div class="mx-auto max-w-container-max">
+        <h2 class="mb-16 font-headline-lg text-headline-lg text-white" data-reveal>КАК МЫ РАБОТАЕМ</h2>
+        <div class="grid grid-cols-1 gap-12 md:grid-cols-4">
+          <div class="relative" data-reveal data-delay="0">
+            <span class="absolute -left-4 -top-12 font-display-xl text-primary-container opacity-20">01</span>
+            <h4 class="relative z-10 mb-4 font-headline-md text-white">Пишешь в Телеграм</h4>
+            <p class="text-secondary">Договариваемся о времени, задаче и формате записи или дополнительной услуги.</p>
+          </div>
+          <div class="relative" data-reveal data-delay="80">
+            <span class="absolute -left-4 -top-12 font-display-xl text-primary-container opacity-20">02</span>
+            <h4 class="relative z-10 mb-4 font-headline-md text-white">Обсуждаем</h4>
+            <p class="text-secondary">Подбираем референсы, бит, структуру и ставим задачу по работе над треком.</p>
+          </div>
+          <div class="relative" data-reveal data-delay="160">
+            <span class="absolute -left-4 -top-12 font-display-xl text-primary-container opacity-20">03</span>
+            <h4 class="relative z-10 mb-4 font-headline-md text-white">Записываем</h4>
+            <p class="text-secondary">Работаем в студии до нужной подачи, фиксируем дубль и собираем материал.</p>
+          </div>
+          <div class="relative" data-reveal data-delay="240">
+            <span class="absolute -left-4 -top-12 font-display-xl text-primary-container opacity-20">04</span>
+            <h4 class="relative z-10 mb-4 font-headline-md text-white">Трек готов</h4>
+            <p class="text-secondary">Получаете готовый материал или следующий этап работы по вашему релизу.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface-container-low px-margin-mobile py-32 md:px-margin-desktop" id="reviews">
+      <div class="mx-auto max-w-container-max">
+        <h2 class="mb-16 font-headline-lg text-headline-lg text-white" data-reveal>ОТЗЫВЫ</h2>
+        <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div class="motion-lift border-l-4 border-primary-container bg-black p-10" data-reveal data-delay="0">
+            <p class="mb-6 font-body-lg italic text-white">«Полный цикл работ в одной точке: запись, сведение, биты, обучение и выпуск релиза без лишних пересылок и потери вайба по дороге.»</p>
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-container font-bold text-black">Z</div>
+              <div>
+                <div class="font-bold text-white">Звук ВО рту</div>
+                <div class="text-xs text-primary-container">Студийный подход</div>
+              </div>
+            </div>
+          </div>
+          <div class="motion-lift border-l-4 border-primary-container bg-black p-10" data-reveal data-delay="100">
+            <p class="mb-6 font-body-lg italic text-white">«Студия в самом центре Москвы, понятный прайс и прямой контакт через Телеграм. Всё быстро, жёстко по делу и с правильной атмосферой.»</p>
+            <div class="flex items-center gap-4">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-primary-container font-bold text-black">M</div>
+              <div>
+                <div class="font-bold text-white">Москва</div>
+                <div class="text-xs text-primary-container">Покровка, 2/1с2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-margin-mobile py-32 md:px-margin-desktop" id="faq">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="mb-16 text-center font-headline-lg text-headline-lg text-white" data-reveal>ВОПРОСЫ</h2>
+        <div class="space-y-6">
+          <details class="group border border-white/5 bg-surface-container-low transition-all open:border-primary-container" data-reveal data-delay="0">
+            <summary class="flex cursor-pointer list-none items-center justify-between p-6">
+              <span class="font-headline-md text-xl text-white">Как записаться на студию?</span>
+              <span class="material-symbols-outlined text-primary-container transition-transform group-open:rotate-180">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 font-body-md text-secondary">
+              Напишите в <a class="text-primary-container" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer">Телеграм записи</a>, и мы быстро согласуем время, задачу и формат сессии.
+            </div>
+          </details>
+          <details class="group border border-white/5 bg-surface-container-low transition-all open:border-primary-container" data-reveal data-delay="80">
+            <summary class="flex cursor-pointer list-none items-center justify-between p-6">
+              <span class="font-headline-md text-xl text-white">Можно ли заказать сведение, бит или обучение отдельно?</span>
+              <span class="material-symbols-outlined text-primary-container transition-transform group-open:rotate-180">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 font-body-md text-secondary">
+              Да. Для сведения, битов, текстов, дистрибуции и обучения используйте <a class="text-primary-container" href="https://t.me/zvr_mix" target="_blank" rel="noreferrer">Телеграм дополнительных услуг</a>.
+            </div>
+          </details>
+          <details class="group border border-white/5 bg-surface-container-low transition-all open:border-primary-container" data-reveal data-delay="160">
+            <summary class="flex cursor-pointer list-none items-center justify-between p-6">
+              <span class="font-headline-md text-xl text-white">Где находится студия?</span>
+              <span class="material-symbols-outlined text-primary-container transition-transform group-open:rotate-180">expand_more</span>
+            </summary>
+            <div class="px-6 pb-6 font-body-md text-secondary">
+              Москва, ул. Покровка, 2/1с2, 4 этаж. Точные детали по входу и времени подтверждаем в Телеграм.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+      <section class="bg-primary-container px-margin-mobile py-32 text-center text-black md:px-margin-desktop">
+        <div class="mx-auto max-w-container-max" data-reveal>
+          <h2 class="mb-8 font-display-xl text-[48px] uppercase leading-[0.94] sm:text-[64px] md:text-display-xl">Готов записать свой трек?</h2>
+          <p class="mb-12 text-xl font-headline-md uppercase leading-tight opacity-80 md:text-[32px]">Не откладывай на потом то, что должно звучать уже завтра.</p>
+          <a class="inline-block bg-black px-8 py-6 font-['Space_Grotesk'] text-lg font-bold uppercase text-white transition-transform hover:scale-105 md:px-16 md:py-8 md:font-display-xl md:text-2xl" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer">
+            Записаться в Телеграм
+          </a>
+        </div>
+      </section>
+  </main>
+
+  <footer class="w-full border-t border-[#1A1A1A] bg-black">
+    <div class="relative mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-8 px-8 py-16 md:flex-row" data-reveal>
+      <span class="mb-12 block w-full text-center text-6xl font-black text-white opacity-10 md:hidden">ЗВУК ВО РТУ</span>
+      <div class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
+        © 2026 ЗВУК ВО РТУ. МОСКВА. ВСЕ ПРАВА ЗАЩИЩЕНЫ.
+      </div>
+      <div class="flex gap-8">
+        <a class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-[0.2em] text-gray-500 transition-opacity hover:text-white hover:underline underline-offset-8" href="https://t.me/zvr_rec" target="_blank" rel="noreferrer">Запись</a>
+        <a class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-[0.2em] text-gray-500 transition-opacity hover:text-white hover:underline underline-offset-8" href="https://t.me/zvr_mix" target="_blank" rel="noreferrer">Сведение</a>
+        <a class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-[0.2em] text-gray-500 transition-opacity hover:text-white hover:underline underline-offset-8" href="https://t.me/zvukvortu" target="_blank" rel="noreferrer">Канал</a>
+        <a class="font-['Space_Grotesk'] text-xs font-bold uppercase tracking-[0.2em] text-gray-500 transition-opacity hover:text-white hover:underline underline-offset-8" href="#faq">Вопросы</a>
+      </div>
+      <span class="pointer-events-none absolute left-1/2 hidden -translate-x-1/2 text-6xl font-black text-white opacity-10 md:block">ЗВУК ВО РТУ</span>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const revealItems = document.querySelectorAll("[data-reveal]");
+      revealItems.forEach((item) => {
+        const delay = item.dataset.delay;
+        if (delay) {
+          item.style.setProperty("--reveal-delay", `${delay}ms`);
+        }
+      });
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        revealItems.forEach((item) => item.classList.add("is-visible"));
+        return;
+      }
+
+      const show = (item) => item.classList.add("is-visible");
+
+      requestAnimationFrame(() => {
+        document.body.classList.add("motion-ready");
+        document.querySelectorAll("[data-immediate]").forEach(show);
+      });
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            show(entry.target);
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          threshold: 0.14,
+          rootMargin: "0px 0px -12% 0px"
+        }
+      );
+
+      revealItems.forEach((item) => {
+        if (!item.hasAttribute("data-immediate")) {
+          observer.observe(item);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
