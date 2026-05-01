@@ -3,3 +3,14 @@ Thumbs.db
 desktop.ini
 qa/
 .tmp-edge-profile*
+tools/
+.chrome-cdp-profile/
+.chrome-headless-check-*/
+.edge-profile/
+audit-*.png
+audit-report.json
+cdp-check-*.png
+cdp-footer-*.png
+check-*.png
+postfix-*.png
+qa-*.png
