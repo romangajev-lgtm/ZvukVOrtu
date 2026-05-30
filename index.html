@@ -87,6 +87,13 @@
       padding-block: clamp(72px, 10vw, 112px);
     }
 
+    .hero,
+    .section,
+    .gear-strip,
+    .footer {
+      scroll-margin-top: var(--header-height);
+    }
+
     .topbar {
       position: fixed;
       inset: 0 0 auto;
@@ -118,6 +125,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      min-height: 44px;
       font-family: "Unbounded", sans-serif;
       font-size: 1rem;
       font-weight: 900;
@@ -165,6 +173,9 @@
 
     .nav-links a {
       position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
       font-family: "Unbounded", sans-serif;
       font-size: 0.68rem;
       font-weight: 700;
@@ -789,6 +800,203 @@
       color: var(--accent);
     }
 
+    .recorded {
+      position: relative;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(204, 255, 0, 0.1), transparent 30%),
+        linear-gradient(180deg, #090909 0%, #101010 100%);
+      border-top: 1px solid rgba(204, 255, 0, 0.14);
+    }
+
+    .recorded-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: clamp(12px, 1.4vw, 18px);
+    }
+
+    .recorded-card {
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(33, 33, 33, 0.8), rgba(13, 13, 13, 0.98));
+      transition:
+        border-color 220ms ease,
+        background 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    .recorded-card:hover,
+    .recorded-card:focus-within {
+      border-color: rgba(204, 255, 0, 0.42);
+      background: linear-gradient(180deg, rgba(44, 44, 44, 0.84), rgba(14, 14, 14, 1));
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.28);
+    }
+
+    .recorded-photo {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #111111;
+    }
+
+    .recorded-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 8, 8, 0) 52%, rgba(8, 8, 8, 0.56) 100%),
+        linear-gradient(0deg, rgba(204, 255, 0, 0.08), transparent 46%);
+      pointer-events: none;
+    }
+
+    .recorded-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.82) brightness(0.82) contrast(1.04);
+      transition: transform 520ms ease, filter 520ms ease;
+    }
+
+    .recorded-card:hover img,
+    .recorded-card:focus-within img {
+      transform: scale(1.045);
+      filter: grayscale(0.24) brightness(0.92) contrast(1.04);
+    }
+
+    .recorded-meta {
+      display: grid;
+      gap: 8px;
+      min-height: 96px;
+      padding: 16px 14px 18px;
+    }
+
+    .recorded-name {
+      margin: 0;
+      font-family: "Unbounded", sans-serif;
+      font-size: clamp(0.86rem, 1.15vw, 1rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .recorded-role {
+      font-family: "Unbounded", sans-serif;
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .before-after {
+      background:
+        linear-gradient(180deg, #101010 0%, #090909 100%),
+        var(--bg);
+    }
+
+    .audio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .audio-card {
+      display: grid;
+      gap: 18px;
+      min-height: 220px;
+      padding: 22px 18px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(36, 36, 36, 0.74), rgba(15, 15, 15, 0.98));
+      transition:
+        border-color 220ms ease,
+        background 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    .audio-card:hover,
+    .audio-card:focus-within {
+      border-color: rgba(204, 255, 0, 0.4);
+      background: linear-gradient(180deg, rgba(42, 42, 42, 0.82), rgba(14, 14, 14, 1));
+      box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.28),
+        0 2px 8px rgba(0, 0, 0, 0.22);
+    }
+
+    .audio-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .audio-label {
+      font-family: "Unbounded", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .audio-number {
+      font-family: "Unbounded", sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.34);
+    }
+
+    .audio-title {
+      margin: 0;
+      min-height: 2.2em;
+      font-family: "Unbounded", sans-serif;
+      font-size: clamp(1rem, 1.7vw, 1.28rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .audio-copy {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .audio-player {
+      margin-top: auto;
+      padding-top: 2px;
+    }
+
+    .audio-player audio {
+      display: block;
+      width: 100%;
+      min-height: 42px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #161616;
+      color-scheme: dark;
+      accent-color: var(--accent);
+    }
+
+    .audio-player audio::-webkit-media-controls-enclosure {
+      border-radius: 999px;
+      background-color: #161616;
+      box-shadow: none;
+    }
+
+    .audio-player audio::-webkit-media-controls-panel {
+      border-radius: 999px;
+      background-color: #161616;
+    }
+
+    .audio-player audio::-webkit-media-controls-current-time-display,
+    .audio-player audio::-webkit-media-controls-time-remaining-display {
+      color: #ffffff;
+    }
+
     .gear-strip {
       overflow: hidden;
       border-top: 1px solid rgba(204, 255, 0, 0.75);
@@ -885,6 +1093,9 @@
 
     .footer-links a {
       position: relative;
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
       font-family: "Unbounded", sans-serif;
       font-size: 0.62rem;
       font-weight: 700;
@@ -979,6 +1190,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .recorded-grid,
+      .audio-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
       .ops-card.primary {
         grid-column: 1 / -1;
       }
@@ -1053,8 +1269,13 @@
 
       .voices-grid,
       .ops-grid,
+      .audio-grid,
       .acid-banner {
         grid-template-columns: 1fr;
+      }
+
+      .recorded-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .voice-card,
@@ -1082,6 +1303,13 @@
         font-size: 0.96rem;
       }
 
+      .recorded .section-title,
+      .before-after .section-title {
+        font-size: clamp(2.35rem, 11.5vw, 3.15rem);
+        line-height: 1;
+        overflow-wrap: anywhere;
+      }
+
       .hero-stat {
         width: 100%;
         justify-content: space-between;
@@ -1092,6 +1320,10 @@
       }
 
       .ops-card {
+        min-height: 0;
+      }
+
+      .audio-card {
         min-height: 0;
       }
 
@@ -1136,6 +1368,10 @@
       .header-cta .label-short {
         display: inline;
       }
+
+      .recorded-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1178,6 +1414,8 @@
         <a href="#studio">Студия</a>
         <a href="#artists">Сессии</a>
         <a href="#services">Услуги</a>
+        <a href="#recorded">У нас записывались</a>
+        <a href="#before-after">До / После</a>
         <a href="#contact">Контакт</a>
       </nav>
 
@@ -1354,6 +1592,129 @@
       </div>
     </section>
 
+    <section class="section recorded" id="recorded">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-reveal>У нас записывались</h2>
+          <p class="section-note" data-reveal data-delay="80">
+            Артисты и медийные личности, которые работали в нашей студии.
+          </p>
+        </div>
+
+        <div class="recorded-grid" aria-label="Артисты и медийные личности">
+          <article class="recorded-card" data-reveal data-delay="0">
+            <div class="recorded-photo">
+              <img
+                src="assets/artists/code10.webp"
+                alt="CODE10"
+                loading="lazy"
+                width="640"
+                height="800"
+              >
+            </div>
+            <div class="recorded-meta">
+              <h3 class="recorded-name">CODE10</h3>
+              <span class="recorded-role">рэпер / артист</span>
+            </div>
+          </article>
+
+          <article class="recorded-card" data-reveal data-delay="60">
+            <div class="recorded-photo">
+              <img
+                src="assets/artists/litvin.webp"
+                alt="Литвин"
+                loading="lazy"
+                width="640"
+                height="800"
+              >
+            </div>
+            <div class="recorded-meta">
+              <h3 class="recorded-name">Литвин</h3>
+              <span class="recorded-role">блогер / артист</span>
+            </div>
+          </article>
+
+          <article class="recorded-card" data-reveal data-delay="120">
+            <div class="recorded-photo">
+              <img
+                src="assets/artists/limba.webp"
+                alt="LIMBA"
+                loading="lazy"
+                width="640"
+                height="800"
+              >
+            </div>
+            <div class="recorded-meta">
+              <h3 class="recorded-name">LIMBA</h3>
+              <span class="recorded-role">артист</span>
+            </div>
+          </article>
+
+          <article class="recorded-card" data-reveal data-delay="180">
+            <div class="recorded-photo">
+              <img
+                src="assets/artists/mayot.webp"
+                alt="MAYOT"
+                loading="lazy"
+                width="640"
+                height="800"
+              >
+            </div>
+            <div class="recorded-meta">
+              <h3 class="recorded-name">MAYOT</h3>
+              <span class="recorded-role">рэпер</span>
+            </div>
+          </article>
+
+          <article class="recorded-card" data-reveal data-delay="240">
+            <div class="recorded-photo">
+              <img
+                src="assets/artists/avgust.webp"
+                alt="Август"
+                loading="lazy"
+                width="640"
+                height="800"
+              >
+            </div>
+            <div class="recorded-meta">
+              <h3 class="recorded-name">Август</h3>
+              <span class="recorded-role">рэпер / артист</span>
+            </div>
+          </article>
+
+          <article class="recorded-card" data-reveal data-delay="300">
+            <div class="recorded-photo">
+              <img
+                src="assets/artists/pittkiid.webp"
+                alt="Pittkiid"
+                loading="lazy"
+                width="640"
+                height="800"
+              >
+            </div>
+            <div class="recorded-meta">
+              <h3 class="recorded-name">Pittkiid</h3>
+              <span class="recorded-role">рэпер / артист</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section before-after" id="before-after">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-reveal>До / После</h2>
+          <p class="section-note" data-reveal data-delay="80">
+            Послушайте, как меняется звучание после сведения и обработки.
+            В каждом файле уже собраны обе версии для сравнения.
+          </p>
+        </div>
+
+        <div class="audio-grid" data-audio-list aria-label="Треки до и после обработки"></div>
+      </div>
+    </section>
+
     <section class="gear-strip" id="equipment">
       <div class="container gear-inner">
         <span class="gear-label" data-reveal>Setup</span>
@@ -1398,6 +1759,81 @@
       const body = document.body;
       const menuButton = document.querySelector(".menu-button");
       const navLinks = document.querySelectorAll(".nav-links a");
+      const audioList = document.querySelector("[data-audio-list]");
+      const audioFiles = [
+        "Audio/1 ПРИМЕР (секс) ДО_ПОСЛЕ.wav",
+        "Audio/2 ПРИМЕР (женский) ДО_ПОСЛЕ.wav",
+        "Audio/3 ПРИМЕР (сопли) ДО_ПОСЛЕ .wav",
+        "Audio/4 ПРИМЕР (рэпчина) ДО_ПОСЛЕ.wav",
+      ];
+      const audioTypes = {
+        mp3: "audio/mpeg",
+        wav: "audio/wav",
+        m4a: "audio/mp4",
+        ogg: "audio/ogg",
+      };
+      const cleanAudioTitle = (file) => {
+        const fileName = decodeURIComponent(file.split("/").pop() || file);
+
+        return fileName
+          .replace(/\.[^.]+$/, "")
+          .replace(/\s*ДО[_\s-]*ПОСЛЕ\s*/iu, " До / После")
+          .replace(/ПРИМЕР/giu, "Пример")
+          .replace(/_/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+      };
+
+      if (audioList) {
+        audioFiles.forEach((file, index) => {
+          const extension = file.split(".").pop().toLowerCase();
+          const card = document.createElement("article");
+          const topLine = document.createElement("div");
+          const label = document.createElement("span");
+          const number = document.createElement("span");
+          const title = document.createElement("h3");
+          const copy = document.createElement("p");
+          const playerWrap = document.createElement("div");
+          const audio = document.createElement("audio");
+          const source = document.createElement("source");
+
+          card.className = "audio-card";
+          card.setAttribute("data-reveal", "");
+          card.dataset.delay = String(index * 70);
+          topLine.className = "audio-topline";
+          label.className = "audio-label";
+          number.className = "audio-number";
+          title.className = "audio-title";
+          copy.className = "audio-copy";
+          playerWrap.className = "audio-player";
+
+          label.textContent = "До / После";
+          number.textContent = String(index + 1).padStart(2, "0");
+          title.textContent = cleanAudioTitle(file);
+          copy.textContent = "В одном файле слышно исходник и результат после обработки.";
+          audio.controls = true;
+          audio.preload = "metadata";
+          source.src = encodeURI(file);
+          if (audioTypes[extension]) {
+            source.type = audioTypes[extension];
+          }
+
+          audio.addEventListener("play", () => {
+            audioList.querySelectorAll("audio").forEach((item) => {
+              if (item !== audio) {
+                item.pause();
+              }
+            });
+          });
+
+          topLine.append(label, number);
+          audio.append(source);
+          playerWrap.append(audio);
+          card.append(topLine, title, copy, playerWrap);
+          audioList.append(card);
+        });
+      }
+
       const revealItems = document.querySelectorAll("[data-reveal]");
 
       revealItems.forEach((item) => {
