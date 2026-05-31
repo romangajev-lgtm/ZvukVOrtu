@@ -2222,7 +2222,7 @@
           title.textContent = cleanAudioTitle(file);
           copy.textContent = "В одном файле слышно исходник и результат после обработки.";
           audio.controls = true;
-          audio.preload = "metadata";
+          audio.preload = "none";
           source.src = encodeURI(file);
           if (audioTypes[extension]) {
             source.type = audioTypes[extension];
@@ -2305,32 +2305,40 @@
         let currentIndex = 0;
         let galleryFrame = 0;
 
-        const updateGalleryState = () => {
-          if (!track || !slides.length) return;
+        const setActiveDot = (index) => {
+          dotsWrap?.querySelectorAll(".studio-dot").forEach((dot, dotIndex) => {
+            dot.setAttribute("aria-current", String(dotIndex === index));
+          });
+        };
+
+        const getClosestSlideIndex = () => {
+          if (!track || !slides.length) return currentIndex;
 
           const trackCenter = track.scrollLeft + track.clientWidth / 2;
-          currentIndex = slides.reduce((closest, slide, index) => {
+          return slides.reduce((closest, slide, index) => {
             const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
             const closestSlide = slides[closest];
             const closestCenter = closestSlide.offsetLeft + closestSlide.offsetWidth / 2;
             return Math.abs(slideCenter - trackCenter) < Math.abs(closestCenter - trackCenter) ? index : closest;
           }, currentIndex);
+        };
 
-          dotsWrap?.querySelectorAll(".studio-dot").forEach((dot, index) => {
-            dot.setAttribute("aria-current", String(index === currentIndex));
-          });
+        const updateGalleryState = () => {
+          currentIndex = getClosestSlideIndex();
+          setActiveDot(currentIndex);
         };
 
         const goToSlide = (index) => {
           if (!track || !slides.length) return;
 
           const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
-          track.scrollTo({
-            left: slides[nextIndex].offsetLeft - track.offsetLeft,
-            behavior: reducedMotionQuery.matches ? "auto" : "smooth",
+          slides[nextIndex].scrollIntoView({
+            block: "nearest",
+            inline: "start",
+            behavior: "auto",
           });
           currentIndex = nextIndex;
-          updateGalleryState();
+          setActiveDot(currentIndex);
         };
 
         if (track && slides.length) {
@@ -2344,8 +2352,12 @@
             dotsWrap?.append(dot);
           });
 
-          prevButton?.addEventListener("click", () => goToSlide(currentIndex - 1));
-          nextButton?.addEventListener("click", () => goToSlide(currentIndex + 1));
+          prevButton?.addEventListener("click", () => {
+            goToSlide(getClosestSlideIndex() - 1);
+          });
+          nextButton?.addEventListener("click", () => {
+            goToSlide(getClosestSlideIndex() + 1);
+          });
 
           track.addEventListener("keydown", (event) => {
             if (event.key === "ArrowLeft") {
