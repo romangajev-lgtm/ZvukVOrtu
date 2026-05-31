@@ -538,6 +538,8 @@
       line-height: 0.96;
       letter-spacing: -0.06em;
       text-transform: uppercase;
+      overflow-wrap: anywhere;
+      user-select: none;
     }
 
     .section-note {
@@ -818,6 +820,14 @@
         radial-gradient(circle at 12% 0%, rgba(204, 255, 0, 0.1), transparent 30%),
         linear-gradient(180deg, #090909 0%, #101010 100%);
       border-top: 1px solid rgba(204, 255, 0, 0.14);
+    }
+
+    .recorded .section-head {
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.55fr);
+    }
+
+    .recorded .section-title {
+      font-size: clamp(2.8rem, 6.2vw, 4.45rem);
     }
 
     .recorded-grid {
@@ -1328,7 +1338,7 @@
       }
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 1180px) {
       .nav-shell {
         gap: 10px;
       }
