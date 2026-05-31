@@ -911,6 +911,169 @@
       color: var(--accent);
     }
 
+    .studio-photos {
+      background: linear-gradient(180deg, #101010 0%, #0b0b0b 100%);
+      border-top: 1px solid rgba(204, 255, 0, 0.12);
+    }
+
+    .studio-gallery {
+      display: grid;
+      gap: 18px;
+    }
+
+    .studio-gallery-shell {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .studio-track {
+      display: flex;
+      gap: 18px;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .studio-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .studio-slide {
+      flex: 0 0 100%;
+      min-width: 0;
+      margin: 0;
+      scroll-snap-align: start;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(34, 34, 34, 0.68), rgba(13, 13, 13, 0.98));
+    }
+
+    .studio-frame {
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #111111;
+    }
+
+    .studio-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.82) contrast(1.04) saturate(0.82);
+    }
+
+    .studio-caption {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 68px;
+      padding: 18px 20px;
+    }
+
+    .studio-caption strong {
+      font-family: "Unbounded", sans-serif;
+      font-size: clamp(1rem, 2vw, 1.28rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .studio-caption span {
+      font-family: "Unbounded", sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .studio-controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+
+    .studio-control {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      background: rgba(8, 8, 8, 0.72);
+      color: var(--text);
+      cursor: pointer;
+      pointer-events: auto;
+      backdrop-filter: blur(10px);
+      transition:
+        transform 180ms cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 180ms ease,
+        background-color 180ms ease,
+        color 180ms ease;
+    }
+
+    .studio-control::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 11px;
+      height: 11px;
+      border-top: 2px solid currentColor;
+      border-left: 2px solid currentColor;
+    }
+
+    .studio-control.prev::before {
+      transform: translate(-38%, -50%) rotate(-45deg);
+    }
+
+    .studio-control.next::before {
+      transform: translate(-62%, -50%) rotate(135deg);
+    }
+
+    .studio-control:hover,
+    .studio-control:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #080808;
+      outline: none;
+    }
+
+    .studio-dots {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .studio-dot {
+      width: 26px;
+      height: 4px;
+      padding: 0;
+      border: 0;
+      background: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      transition:
+        width 180ms ease,
+        background-color 180ms ease;
+    }
+
+    .studio-dot[aria-current="true"] {
+      width: 42px;
+      background: var(--accent);
+    }
+
     .before-after {
       background:
         linear-gradient(180deg, #101010 0%, #090909 100%),
@@ -1392,6 +1555,10 @@
         grid-template-columns: 1fr;
       }
 
+      .recorded .section-head {
+        grid-template-columns: 1fr;
+      }
+
       .hero-meta {
         flex-direction: column;
         align-items: stretch;
@@ -1410,6 +1577,10 @@
 
       .recorded-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .studio-frame {
+        aspect-ratio: 4 / 3;
       }
 
       .voice-card,
@@ -1506,6 +1677,26 @@
       .recorded-grid {
         grid-template-columns: 1fr;
       }
+
+      .studio-frame {
+        aspect-ratio: 4 / 5;
+      }
+
+      .studio-caption {
+        align-items: flex-start;
+        flex-direction: column;
+        min-height: 92px;
+        padding: 16px;
+      }
+
+      .studio-controls {
+        padding: 0 10px;
+      }
+
+      .studio-control {
+        width: 42px;
+        height: 42px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1522,9 +1713,16 @@
       .brand-reveal,
       .brand-reveal::after,
       .brand-reveal__active,
+      .studio-track,
+      .studio-control,
+      .studio-dot,
       [data-reveal] {
         animation: none !important;
         transition: none !important;
+      }
+
+      .studio-track {
+        scroll-behavior: auto;
       }
 
       .brand-reveal {
@@ -1561,6 +1759,7 @@
         <a href="#artists">Сессии</a>
         <a href="#services">Услуги</a>
         <a href="#recorded">У нас записывались</a>
+        <a href="#studio-photos">Фото</a>
         <a href="#before-after">До / После</a>
         <a href="#contact">Контакт</a>
       </nav>
@@ -1847,6 +2046,97 @@
       </div>
     </section>
 
+    <section class="section studio-photos" id="studio-photos">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title" data-reveal>Фото студии</h2>
+          <p class="section-note" data-reveal data-delay="80">
+            Живые кадры комнаты записи, рабочей зоны и атмосферы, в которой проходят сессии.
+          </p>
+        </div>
+
+        <div class="studio-gallery" data-studio-gallery data-reveal data-delay="120">
+          <div class="studio-gallery-shell">
+            <div class="studio-track" data-studio-track aria-label="Фотографии студии" tabindex="0">
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-01.webp" alt="Артисты в комнате записи студии" loading="lazy" width="1200" height="1600">
+                </div>
+                <figcaption class="studio-caption"><strong>Комната записи</strong><span>01 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-02.webp" alt="Съёмка и запись в студийной комнате" loading="lazy" width="1200" height="1600">
+                </div>
+                <figcaption class="studio-caption"><strong>Сессия</strong><span>02 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-03.webp" alt="Запись вокала у микрофона" loading="lazy" width="1600" height="1200">
+                </div>
+                <figcaption class="studio-caption"><strong>Запись вокала</strong><span>03 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-04.webp" alt="Диван и зона ожидания в студии" loading="lazy" width="1600" height="1200">
+                </div>
+                <figcaption class="studio-caption"><strong>Зона сессии</strong><span>04 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-05.webp" alt="Артисты на фоне студийного света" loading="lazy" width="1536" height="1536">
+                </div>
+                <figcaption class="studio-caption"><strong>Атмосфера</strong><span>05 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-06.webp" alt="Рабочее место звукорежиссёра" loading="lazy" width="1600" height="1066">
+                </div>
+                <figcaption class="studio-caption"><strong>Рабочее место</strong><span>06 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-07.webp" alt="Студийный стол, монитор и микрофонная стойка" loading="lazy" width="1600" height="1200">
+                </div>
+                <figcaption class="studio-caption"><strong>Сетап</strong><span>07 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-08.webp" alt="Микрофон и место для записи вокала" loading="lazy" width="1600" height="1200">
+                </div>
+                <figcaption class="studio-caption"><strong>Микрофон</strong><span>08 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-09.webp" alt="Общий вид студии и рабочей зоны" loading="lazy" width="1600" height="1200">
+                </div>
+                <figcaption class="studio-caption"><strong>Общий план</strong><span>09 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-10.webp" alt="Монитор, ноутбук и наушники на рабочем столе" loading="lazy" width="1600" height="1200">
+                </div>
+                <figcaption class="studio-caption"><strong>Контроль микса</strong><span>10 / 11</span></figcaption>
+              </figure>
+              <figure class="studio-slide">
+                <div class="studio-frame">
+                  <img src="assets/studio/studio-11.webp" alt="Вертикальный кадр рабочей зоны студии" loading="lazy" width="1200" height="1600">
+                </div>
+                <figcaption class="studio-caption"><strong>Рабочая зона</strong><span>11 / 11</span></figcaption>
+              </figure>
+            </div>
+
+            <div class="studio-controls" aria-hidden="false">
+              <button class="studio-control prev" type="button" data-studio-prev aria-label="Предыдущее фото"></button>
+              <button class="studio-control next" type="button" data-studio-next aria-label="Следующее фото"></button>
+            </div>
+          </div>
+
+          <div class="studio-dots" data-studio-dots aria-label="Выбор фотографии"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section before-after" id="before-after">
       <div class="container">
         <div class="section-head">
@@ -1908,6 +2198,7 @@
       const navLinks = document.querySelectorAll(".nav-links a");
       const audioList = document.querySelector("[data-audio-list]");
       const brandReveal = document.querySelector("[data-brand-reveal]");
+      const studioGallery = document.querySelector("[data-studio-gallery]");
       const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       const audioFiles = [
         "Audio/1 ПРИМЕР (секс) ДО_ПОСЛЕ.wav",
@@ -2033,6 +2324,84 @@
           isTracking = false;
           brandReveal.classList.remove("is-active");
         });
+      }
+
+      if (studioGallery) {
+        const track = studioGallery.querySelector("[data-studio-track]");
+        const prevButton = studioGallery.querySelector("[data-studio-prev]");
+        const nextButton = studioGallery.querySelector("[data-studio-next]");
+        const dotsWrap = studioGallery.querySelector("[data-studio-dots]");
+        const slides = Array.from(studioGallery.querySelectorAll(".studio-slide"));
+        let currentIndex = 0;
+        let galleryFrame = 0;
+
+        const updateGalleryState = () => {
+          if (!track || !slides.length) return;
+
+          const trackCenter = track.scrollLeft + track.clientWidth / 2;
+          currentIndex = slides.reduce((closest, slide, index) => {
+            const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
+            const closestSlide = slides[closest];
+            const closestCenter = closestSlide.offsetLeft + closestSlide.offsetWidth / 2;
+            return Math.abs(slideCenter - trackCenter) < Math.abs(closestCenter - trackCenter) ? index : closest;
+          }, currentIndex);
+
+          dotsWrap?.querySelectorAll(".studio-dot").forEach((dot, index) => {
+            dot.setAttribute("aria-current", String(index === currentIndex));
+          });
+        };
+
+        const goToSlide = (index) => {
+          if (!track || !slides.length) return;
+
+          const nextIndex = Math.max(0, Math.min(slides.length - 1, index));
+          track.scrollTo({
+            left: slides[nextIndex].offsetLeft - track.offsetLeft,
+            behavior: reducedMotionQuery.matches ? "auto" : "smooth",
+          });
+          currentIndex = nextIndex;
+          updateGalleryState();
+        };
+
+        if (track && slides.length) {
+          slides.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.className = "studio-dot";
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Показать фото ${index + 1}`);
+            dot.setAttribute("aria-current", String(index === 0));
+            dot.addEventListener("click", () => goToSlide(index));
+            dotsWrap?.append(dot);
+          });
+
+          prevButton?.addEventListener("click", () => goToSlide(currentIndex - 1));
+          nextButton?.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+          track.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowLeft") {
+              event.preventDefault();
+              goToSlide(currentIndex - 1);
+            }
+
+            if (event.key === "ArrowRight") {
+              event.preventDefault();
+              goToSlide(currentIndex + 1);
+            }
+          });
+
+          track.addEventListener(
+            "scroll",
+            () => {
+              if (!galleryFrame) {
+                galleryFrame = window.requestAnimationFrame(() => {
+                  updateGalleryState();
+                  galleryFrame = 0;
+                });
+              }
+            },
+            { passive: true }
+          );
+        }
       }
 
       const revealItems = document.querySelectorAll("[data-reveal]");
