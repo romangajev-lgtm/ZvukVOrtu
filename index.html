@@ -36,6 +36,18 @@
       --header-height: 84px;
     }
 
+    @property --x {
+      syntax: "<percentage>";
+      inherits: true;
+      initial-value: 50%;
+    }
+
+    @property --y {
+      syntax: "<percentage>";
+      inherits: true;
+      initial-value: 50%;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -1028,6 +1040,14 @@
     }
 
     .gear-text {
+      --x: 50%;
+      --y: 50%;
+      --reveal-opacity: 0;
+      --spotlight-size: clamp(130px, 18vw, 260px);
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      place-items: center;
       font-family: "Unbounded", sans-serif;
       font-size: clamp(3rem, 11vw, 8.3rem);
       font-weight: 900;
@@ -1036,7 +1056,111 @@
       text-transform: uppercase;
       white-space: nowrap;
       text-align: center;
+      user-select: none;
       color: rgba(255, 255, 255, 0.08);
+      contain: paint;
+    }
+
+    .brand-reveal {
+      cursor: crosshair;
+    }
+
+    .brand-reveal__base,
+    .brand-reveal__active {
+      grid-area: 1 / 1;
+      display: block;
+      width: 100%;
+    }
+
+    .brand-reveal__base {
+      color: rgba(255, 255, 255, 0.08);
+    }
+
+    .brand-reveal__active {
+      position: relative;
+      color: #050505;
+      background:
+        radial-gradient(circle at var(--x) var(--y), rgba(255, 255, 255, 0.28), transparent 0 18%),
+        linear-gradient(135deg, #c6ff00 0%, #b7ff00 100%);
+      opacity: var(--reveal-opacity);
+      -webkit-mask-image: radial-gradient(
+        circle var(--spotlight-size) at var(--x) var(--y),
+        #000 0%,
+        #000 44%,
+        rgba(0, 0, 0, 0.74) 58%,
+        transparent 76%
+      );
+      mask-image: radial-gradient(
+        circle var(--spotlight-size) at var(--x) var(--y),
+        #000 0%,
+        #000 44%,
+        rgba(0, 0, 0, 0.74) 58%,
+        transparent 76%
+      );
+      transition: opacity 260ms cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: none;
+    }
+
+    .brand-reveal::after {
+      content: "";
+      position: absolute;
+      inset: -18%;
+      z-index: -1;
+      opacity: calc(var(--reveal-opacity) * 0.36);
+      background: radial-gradient(
+        circle calc(var(--spotlight-size) * 0.72) at var(--x) var(--y),
+        rgba(198, 255, 0, 0.22),
+        transparent 72%
+      );
+      filter: blur(16px);
+      transition: opacity 260ms cubic-bezier(0.23, 1, 0.32, 1);
+      pointer-events: none;
+    }
+
+    .brand-reveal.is-active {
+      --reveal-opacity: 1;
+    }
+
+    .brand-reveal:focus-visible {
+      --reveal-opacity: 1;
+      outline: 1px solid rgba(204, 255, 0, 0.55);
+      outline-offset: 8px;
+    }
+
+    @media (hover: none) {
+      .brand-reveal {
+        --reveal-opacity: 0.9;
+      }
+
+      .brand-reveal__active,
+      .brand-reveal::after {
+        animation: brandSweep 5.8s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+      }
+    }
+
+    @keyframes brandSweep {
+      0%,
+      18% {
+        --x: 8%;
+        --y: 52%;
+        opacity: 0;
+      }
+      36%,
+      58% {
+        --x: 50%;
+        --y: 48%;
+        opacity: var(--reveal-opacity);
+      }
+      78% {
+        --x: 92%;
+        --y: 52%;
+        opacity: var(--reveal-opacity);
+      }
+      100% {
+        --x: 92%;
+        --y: 52%;
+        opacity: 0;
+      }
     }
 
     .footer {
@@ -1385,9 +1509,21 @@
       .voice-card,
       .voice-card img,
       .ops-card,
+      .brand-reveal,
+      .brand-reveal::after,
+      .brand-reveal__active,
       [data-reveal] {
         animation: none !important;
         transition: none !important;
+      }
+
+      .brand-reveal {
+        cursor: default;
+      }
+
+      .brand-reveal__active,
+      .brand-reveal::after {
+        opacity: 0 !important;
       }
 
       [data-reveal] {
@@ -1722,8 +1858,9 @@
           Точный сетап для записи, мониторинга и контроля микса: мировой стандарт по микрофону,
           надёжный интерфейс, плотный мониторинг и мониторы, на которых слышно, что происходит на самом деле.
         </p>
-        <div class="gear-text" data-reveal data-delay="140">
-          ZVUKVORTU
+        <div class="gear-text brand-reveal" data-reveal data-delay="140" data-brand-reveal aria-label="ZVUKVORTU" tabindex="0">
+          <span class="brand-reveal__base" aria-hidden="true">ZVUKVORTU</span>
+          <span class="brand-reveal__active" aria-hidden="true">ZVUKVORTU</span>
         </div>
       </div>
     </section>
@@ -1760,6 +1897,8 @@
       const menuButton = document.querySelector(".menu-button");
       const navLinks = document.querySelectorAll(".nav-links a");
       const audioList = document.querySelector("[data-audio-list]");
+      const brandReveal = document.querySelector("[data-brand-reveal]");
+      const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
       const audioFiles = [
         "Audio/1 ПРИМЕР (секс) ДО_ПОСЛЕ.wav",
         "Audio/2 ПРИМЕР (женский) ДО_ПОСЛЕ.wav",
@@ -1834,6 +1973,58 @@
         });
       }
 
+      if (brandReveal && !reducedMotionQuery.matches) {
+        let pendingFrame = 0;
+        let currentX = 50;
+        let currentY = 50;
+        let targetX = 50;
+        let targetY = 50;
+        let isTracking = false;
+
+        const trackPointer = () => {
+          currentX += (targetX - currentX) * 0.24;
+          currentY += (targetY - currentY) * 0.24;
+          brandReveal.style.setProperty("--x", `${currentX}%`);
+          brandReveal.style.setProperty("--y", `${currentY}%`);
+
+          const isSettled = Math.abs(targetX - currentX) < 0.08 && Math.abs(targetY - currentY) < 0.08;
+          if (isTracking || !isSettled) {
+            pendingFrame = window.requestAnimationFrame(trackPointer);
+          } else {
+            pendingFrame = 0;
+          }
+        };
+
+        const queuePointerPosition = (event) => {
+          const rect = brandReveal.getBoundingClientRect();
+          targetX = ((event.clientX - rect.left) / rect.width) * 100;
+          targetY = ((event.clientY - rect.top) / rect.height) * 100;
+
+          if (!pendingFrame) {
+            pendingFrame = window.requestAnimationFrame(trackPointer);
+          }
+        };
+
+        brandReveal.addEventListener("pointerenter", (event) => {
+          const rect = brandReveal.getBoundingClientRect();
+          currentX = ((event.clientX - rect.left) / rect.width) * 100;
+          currentY = ((event.clientY - rect.top) / rect.height) * 100;
+          targetX = currentX;
+          targetY = currentY;
+          brandReveal.style.setProperty("--x", `${currentX}%`);
+          brandReveal.style.setProperty("--y", `${currentY}%`);
+          isTracking = true;
+          brandReveal.classList.add("is-active");
+        });
+
+        brandReveal.addEventListener("pointermove", queuePointerPosition);
+
+        brandReveal.addEventListener("pointerleave", () => {
+          isTracking = false;
+          brandReveal.classList.remove("is-active");
+        });
+      }
+
       const revealItems = document.querySelectorAll("[data-reveal]");
 
       revealItems.forEach((item) => {
@@ -1861,7 +2052,7 @@
         link.addEventListener("click", closeMenu);
       });
 
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      if (reducedMotionQuery.matches) {
         revealItems.forEach((item) => item.classList.add("is-visible"));
         body.classList.add("motion-ready");
         return;
